@@ -8,6 +8,7 @@ const app = express();
 // Configure le moteur de vues EJS
 app.set("view engine", "ejs");
 app.set("views", "./views"); // Dossier racine "views"
+app.use(express.static("public"));
 
 // Route GET /
 app.get("/", (req, res) => {
