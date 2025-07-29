@@ -22,5 +22,8 @@
     "url": "https://github.com/Yoalgrin/TP_helpMe/issues"
   },
   "homepage": "https://github.com/Yoalgrin/TP_helpMe#readme",
-  "description": ""
+  "description": "",
+  "devDependencies": {
+    "jest": "^30.0.5"
+  }
 }
