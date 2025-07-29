@@ -14,6 +14,9 @@ app.use(express.static("public"));
 app.get("/", (req, res) => {
   res.render("index");
 });
+app.get("/tickets", (req, res) => {
+  res.render("liste-tickets");
+});
 
 // Récupère le port depuis .env
 const port = process.env.PORT_NO || 3000;
