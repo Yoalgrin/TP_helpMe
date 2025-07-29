@@ -1,22 +1,26 @@
 // Charge les variables d'environnement
 require("dotenv").config();
 
+// Constantes de configuration
+const EXPRESS_VIEW_ENGINE = "ejs";
+const VIEWS_FOLDER = "./views";
+const STATIC_FOLDER = "public";
+const BASE_ROUTE = "/"; // route d'entrée
+
 // Importe express
 const express = require("express");
 const app = express();
 
-// Configure le moteur de vues EJS
-app.set("view engine", "ejs");
-app.set("views", "./views"); // Dossier racine "views"
-app.use(express.static("public"));
+// Importe les routeurs
+const ticketRoutes = require("./routes/ticketRoutes");
 
-// Route GET /
-app.get("/", (req, res) => {
-  res.render("index");
-});
-app.get("/tickets", (req, res) => {
-  res.render("liste-tickets");
-});
+// Configure le moteur de vues
+app.set("view engine", `${EXPRESS_VIEW_ENGINE}`);
+app.set("views", `${VIEWS_FOLDER}`);
+app.use(express.static(`${STATIC_FOLDER}`));
+
+// Branche les routes de tickets
+app.use(`${BASE_ROUTE}`, ticketRoutes);
 
 // Récupère le port depuis .env
 const port = process.env.PORT_NO || 3000;

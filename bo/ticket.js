@@ -17,6 +17,7 @@ class Ticket {
     this.titre = titre;
     this.description = description || "";
     this.dateCreation = Ticket.genererDate();
+    this.dateCreationObj = new Date(); // utile pour trier facilement
     this.etat = "ouvert"; // par défaut
   }
 
