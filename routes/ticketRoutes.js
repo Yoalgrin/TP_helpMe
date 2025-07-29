@@ -29,7 +29,8 @@ router.get([ROUTE_ACCUEIL, ROUTE_TICKETS], (req, res) => {
   // On envoie la liste des tickets à la vue
   res.render(VUE_LISTE_TICKETS, { tickets });
 
-  resetTickets();
+  //Désactivé pour conserver les tickets entre les redémarrages du serveur
+  //resetTickets();
 });
 
 module.exports = router;

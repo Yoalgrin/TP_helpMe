@@ -15,6 +15,15 @@ header {
   justify-content: space-between;
   align-items: center;
 }
+header a {
+  color: white;
+  text-decoration: none;
+  margin-left: 20px;
+}
+
+header a:hover {
+  text-decoration: underline;
+}
 
 footer {
   background-color: #1d3fb3;
