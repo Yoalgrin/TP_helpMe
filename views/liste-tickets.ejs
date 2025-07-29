@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Liste des tickets</title>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <!-- Inclusion du header -->
+    <%- include("fragments/header") %>
+
+    <main>
+      <h1>Tickets</h1>
+
+      <% if (tickets.length === 0) { %>
+      <p>Aucun ticket</p>
+      <% } else { %> <% tickets.forEach(ticket => { %>
+      <div class="ticket">
+        <!-- Titre + état -->
+        <div class="ticket-header">
+          <h2><%= ticket.titre %></h2>
+          <span class="ticket-etat">
+            <%= ticket.etat.charAt(0).toUpperCase() + ticket.etat.slice(1) %>
+          </span>
+        </div>
+
+        <!-- Description tronquée -->
+        <p>
+          <strong>Description du ticket :</strong>
+          <%= ticket.description.length > 50 ? ticket.description.substring(0,
+          50) + "..." : ticket.description %>
+        </p>
+
+        <!-- Auteur + date (en bas à droite) -->
+        <div class="ticket-infos">
+          <span><strong>Auteur :</strong> <%= ticket.auteur %></span>
+          <span><strong>Créé le :</strong> <%= ticket.dateCreation %></span>
+        </div>
+      </div>
+      <% }) %> <% } %>
+    </main>
+
+    <!-- Footer -->
+    <%- include("fragments/footer") %>
+  </body>
+</html>
