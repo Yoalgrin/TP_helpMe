@@ -42,8 +42,13 @@ app.use(express.static(STATIC_FOLDER));
 const ticketRoutes = require("./routes/ticketRoutes");
 const usersRoutes = require("./routes/usersRoutes"); // Ajoute ce fichier quand prêt
 
-app.use(BASE_ROUTE, ticketRoutes);
-app.use(BASE_ROUTE, usersRoutes); // Ajoute les routes utilisateur
+app.use("/tickets", ticketRoutes); //  Ajoute les routes tickets
+app.use("/users", usersRoutes); // Ajoute les routes utilisateurs
+
+// Redirection par défaut
+app.get("/", (req, res) => {
+  res.redirect("/tickets");
+});
 
 // Récupère le port depuis .env
 const port = process.env.PORT_NO || 3000;
