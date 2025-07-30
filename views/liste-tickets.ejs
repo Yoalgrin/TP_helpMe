@@ -12,7 +12,14 @@
     <main>
       <h1>Tickets</h1>
 
-      <% if (tickets.length === 0) { %>
+      <!-- Lien pour créer un ticket (uniquement si connecté) -->
+      <% if (user) { %>
+      <p>
+        <a href="/tickets/new" class="btn btn-primary"
+          >Créer un nouveau ticket</a
+        >
+      </p>
+      <% } %> <% if (tickets.length === 0) { %>
       <p>Aucun ticket</p>
       <% } else { %> <% tickets.forEach(ticket => { %>
       <div class="ticket">
@@ -31,7 +38,7 @@
           50) + "..." : ticket.description %>
         </p>
 
-        <!-- Auteur + date (en bas à droite) -->
+        <!-- Auteur + date -->
         <div class="ticket-infos">
           <span><strong>Auteur :</strong> <%= ticket.auteur %></span>
           <span><strong>Créé le :</strong> <%= ticket.dateCreation %></span>
@@ -40,7 +47,7 @@
       <% }) %> <% } %>
     </main>
 
-    <!-- Footer -->
+    <!-- Inclusion du footer -->
     <%- include("fragments/footer") %>
   </body>
 </html>
