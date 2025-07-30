@@ -28,10 +28,10 @@ router.post("/login", (req, res) => {
   }
 });
 
-// (optionnel) Déconnexion
+// Déconnexion
 router.get("/logout", (req, res) => {
   req.session.destroy(() => {
-    res.redirect("/login");
+    res.redirect("/tickets");
   });
 });
 

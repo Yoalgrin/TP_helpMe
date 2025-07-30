@@ -9,9 +9,9 @@
 
     <% if (user) { %>
     <span>Bienvenue, <%= user.name %></span>
-    <a href="/logout">Se déconnecter</a>
+    <a href="/users/logout">Se déconnecter</a>
     <% } else { %>
-    <a href="/login">Se connecter</a>
+    <a href="/users/login">Se connecter</a>
     <% } %>
   </nav>
 </header>

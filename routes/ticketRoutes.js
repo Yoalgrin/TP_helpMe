@@ -19,7 +19,7 @@ if (process.env.NODE_ENV !== "test" && getAllTickets().length === 0) {
 }
 
 // Route principale pour afficher les tickets
-router.get([ROUTE_ACCUEIL, ROUTE_TICKETS], (req, res) => {
+router.get("/", (req, res) => {
   const tickets = getAllTickets();
 
   // Tri du plus récent au plus ancien
@@ -35,7 +35,7 @@ router.get([ROUTE_ACCUEIL, ROUTE_TICKETS], (req, res) => {
 });
 
 // Création d’un nouveau ticket (protégée par requireAuth)
-router.post("/tickets", requireAuth, (req, res) => {
+router.post("/", requireAuth, (req, res) => {
   const { titre, auteur, description } = req.body;
 
   if (!titre || !auteur) {
