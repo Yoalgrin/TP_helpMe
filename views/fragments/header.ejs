@@ -6,6 +6,12 @@
 
   <nav>
     <a href="/">Accueil</a>
-    <a href="#">Se connecter</a>
+
+    <% if (user) { %>
+    <span>Bienvenue, <%= user.name %></span>
+    <a href="/logout">Se déconnecter</a>
+    <% } else { %>
+    <a href="/login">Se connecter</a>
+    <% } %>
   </nav>
 </header>
