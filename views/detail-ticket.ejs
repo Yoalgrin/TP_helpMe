@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Détail du ticket</title>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <%- include("fragments/header") %>
+
+    <main>
+      <h1><%= ticket.titre %></h1>
+
+      <p><strong>Description :</strong> <%= ticket.description %></p>
+      <p><strong>Auteur :</strong> <%= ticket.auteur %></p>
+      <p><strong>Date :</strong> <%= ticket.dateCreation %></p>
+      <p><strong>État :</strong> <%= ticket.etat %></p>
+
+      <p><a href="/tickets">← Retour à la liste</a></p>
+    </main>
+
+    <%- include("fragments/footer") %>
+  </body>
+</html>

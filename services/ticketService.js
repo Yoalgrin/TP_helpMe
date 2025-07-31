@@ -43,5 +43,31 @@ function resetTickets() {
   nextId = 1;
 }
 
+/**
+ * Ajoute un ticket complet déjà structuré (utile pour les formulaires)
+ * @param {{ auteur: string, titre: string, description: string }} ticketData
+ * @returns {Ticket}
+ */
+function ajouterTicket(ticketData) {
+  const { auteur, titre, description } = ticketData;
+
+  if (!auteur || !titre) throw new Error("Auteur et titre sont obligatoires");
+
+  const ticket = new Ticket(nextId++, auteur, titre, description);
+  tickets.push(ticket);
+  return ticket;
+}
+function supprimerTicket(id) {
+  tickets = tickets.filter((ticket) => ticket.id !== parseInt(id));
+}
+
 // Export des fonctions pour les utiliser dans d'autres fichiers
-module.exports = { creerTicket, getAllTickets, resetTickets };
+module.exports = {
+  creerTicket,
+  getAllTickets,
+  resetTickets,
+  ajouterTicket,
+  supprimerTicket,
+};
+
+//Ajout de supprimer ticket

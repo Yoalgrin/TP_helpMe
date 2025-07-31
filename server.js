@@ -57,3 +57,7 @@ const port = process.env.PORT_NO || 3000;
 app.listen(port, () => {
   console.log(`Serveur lancé sur http://localhost:${port}`);
 });
+// Middleware 404 : route non trouvée
+app.use((req, res) => {
+  res.status(404).render("404");
+});
