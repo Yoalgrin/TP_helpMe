@@ -61,13 +61,52 @@ function supprimerTicket(id) {
   tickets = tickets.filter((ticket) => ticket.id !== parseInt(id));
 }
 
+//Ticket mongo
+
+const { getDb } = require("./db");
+
+async function ajouterTicketMongo({ auteur, titre, description }) {
+  if (!auteur || !titre) throw new Error("Auteur et titre sont obligatoires");
+
+  const ticket = {
+    auteur,
+    titre,
+    description,
+    etat: "ouvert",
+    dateCreation: new Date().toLocaleString(),
+    dateCreationObj: new Date(),
+  };
+
+  const db = getDb();
+  const result = await db.collection("tickets").insertOne(ticket);
+  console.log("Ajout Mongo OK, ID :", result.insertedId);
+  return result.insertedId;
+}
+async function getAllTicketsMongo() {
+  const db = getDb();
+  return await db
+    .collection("tickets")
+    .find()
+    .sort({ dateCreationObj: -1 })
+    .toArray();
+}
+const { ObjectId } = require("mongodb");
+async function supprimerTicketMongo(id) {
+  const db = getDb();
+  const result = await db
+    .collection("tickets")
+    .deleteOne({ _id: new ObjectId(id) });
+  return result.deletedCount > 0; // true si un ticket a été supprimé
+}
+
 // Export des fonctions pour les utiliser dans d'autres fichiers
 module.exports = {
-  creerTicket,
-  getAllTickets,
-  resetTickets,
-  ajouterTicket,
-  supprimerTicket,
+  // creerTicket,
+  //getAllTickets,
+  // resetTickets,
+  //ajouterTicket,
+  //supprimerTicket,
+  ajouterTicketMongo,
+  getAllTicketsMongo,
+  supprimerTicketMongo,
 };
-
-//Ajout de supprimer ticket
