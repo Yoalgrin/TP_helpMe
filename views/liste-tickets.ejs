@@ -51,7 +51,7 @@
         <% if (user && (user.name === ticket.auteur || user.role === 2)) { %>
         <form
           method="POST"
-          action="/tickets/<%= ticket.id %>/supprimer"
+          action="/tickets/<%= ticket._id %>/supprimer"
           style="margin-top: 10px"
         >
           <button
