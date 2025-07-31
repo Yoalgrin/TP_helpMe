@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Créer un ticket</title>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <%- include("fragments/header") %>
+
+    <main class="form-container">
+      <h1>Créer un nouveau ticket</h1>
+
+      <form action="/tickets/nouveau" method="POST">
+        <div class="form-group">
+          <label for="titre">Titre :</label>
+          <input
+            type="text"
+            id="titre"
+            name="titre"
+            value="<%= values.titre || '' %>"
+            maxlength="50"
+            required
+          />
+          <% if (errors.titre) { %>
+          <p class="error"><%= errors.titre %></p>
+          <% } %>
+        </div>
+
+        <div class="form-group">
+          <label for="description">Description :</label>
+          <textarea
+            id="description"
+            name="description"
+            rows="5"
+            maxlength="2000"
+            required
+          >
+<%= values.description || '' %></textarea
+          >
+          <% if (errors.description) { %>
+          <p class="error"><%= errors.description %></p>
+          <% } %>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit">Créer le ticket</button>
+        </div>
+      </form>
+    </main>
+
+    <%- include("fragments/footer") %>
+  </body>
+</html>

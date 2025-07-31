@@ -18,6 +18,7 @@ router.post("/login", (req, res) => {
     req.session.user = {
       id: user.id,
       name: user.name,
+      username: user.username,
       role: user.role,
     };
     res.redirect("/tickets");
