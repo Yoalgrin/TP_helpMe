@@ -11,6 +11,7 @@ const {
   ajouterTicketMongo,
   getAllTicketsMongo,
   supprimerTicketMongo,
+  getTicketByIdMongo,
 } = require("../services/ticketService");
 
 const { requireAuth } = require("../middlewares/auth");
@@ -73,6 +74,10 @@ router.post("/:id/supprimer", requireAuth, async (req, res) => {
   const id = req.params.id;
   const user = req.session.user;
 
+  if (!ObjectId.isValid(id)) {
+    return res.status(400).send("ID invalide");
+  }
+
   try {
     const ticketId = new ObjectId(id); // Optionnel : vérifier que c’est bien un ObjectId valide
     const tickets = await getAllTicketsMongo();
@@ -97,12 +102,12 @@ router.post("/:id/supprimer", requireAuth, async (req, res) => {
 });
 
 // Détail ticket
+
 router.get("/:id", async (req, res) => {
   const id = req.params.id;
 
   try {
-    const tickets = await getAllTicketsMongo();
-    const ticket = tickets.find((t) => t._id.toString() === id);
+    const ticket = await getTicketByIdMongo(id);
 
     if (!ticket) return res.status(404).send("Ticket introuvable");
 

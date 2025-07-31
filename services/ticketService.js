@@ -98,15 +98,15 @@ async function supprimerTicketMongo(id) {
     .deleteOne({ _id: new ObjectId(id) });
   return result.deletedCount > 0; // true si un ticket a été supprimé
 }
+async function getTicketByIdMongo(id) {
+  const db = getDb();
+  return await db.collection("tickets").findOne({ _id: new ObjectId(id) });
+}
 
 // Export des fonctions pour les utiliser dans d'autres fichiers
 module.exports = {
-  // creerTicket,
-  //getAllTickets,
-  // resetTickets,
-  //ajouterTicket,
-  //supprimerTicket,
   ajouterTicketMongo,
   getAllTicketsMongo,
   supprimerTicketMongo,
+  getTicketByIdMongo,
 };
