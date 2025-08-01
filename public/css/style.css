@@ -180,3 +180,24 @@ button[type="submit"]:hover {
 .btn:hover {
   background-color: #1633a2;
 }
+/* ------------------------------
+   VARIANTES DE BOUTONS
+--------------------------------*/
+
+/* Bouton "Annuler" (gris) */
+.btn-cancel {
+  background-color: #777;
+}
+
+.btn-cancel:hover {
+  background-color: #555;
+}
+
+/* Bouton "Supprimer" (rouge) */
+.btn-delete {
+  background-color: #c82333;
+}
+
+.btn-delete:hover {
+  background-color: #a71d2a;
+}

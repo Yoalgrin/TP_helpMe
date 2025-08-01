@@ -13,14 +13,10 @@
       <h1>Tickets</h1>
 
       <!-- Lien pour créer un ticket (uniquement si connecté) -->
-      <% if (session && session.user) { %>
-
-      <p>
-        <form action="/tickets/nouveau" method="get" style="display: inline-block; margin-bottom: 20px;">
-  <button type="submit">Créer un nouveau ticket</button>
-</form>
-
-      </p>
+      <% if (user) { %>
+      <form action="/tickets/nouveau" method="get" style="margin-bottom: 20px">
+        <button type="submit" class="btn">Créer un nouveau ticket</button>
+      </form>
       <% } %>
 
       <!-- S'il n'y a aucun ticket -->
@@ -30,8 +26,8 @@
       <div class="ticket">
         <div class="ticket-header">
           <h2>
-  <a href="/tickets/<%= ticket._id %>"><%= ticket.titre %></a>
-</h2>
+            <a href="/tickets/<%= ticket._id %>"><%= ticket.titre %></a>
+          </h2>
 
           <span class="ticket-etat">
             <%= ticket.etat.charAt(0).toUpperCase() + ticket.etat.slice(1) %>
@@ -49,8 +45,8 @@
           <span><strong>Créé le :</strong> <%= ticket.dateCreation %></span>
         </div>
 
-        <% if (session && session.user && (session.user.name === ticket.auteur || session.user.role === 2)) { %>
-
+        <% if (session && session.user && (session.user.name === ticket.auteur
+        || session.user.role === 2)) { %>
 
         <form
           method="POST"
@@ -59,7 +55,8 @@
         >
           <button
             type="submit"
-            onclick="return confirm('Supprimer ce ticket ?')"
+            class="btn btn-delete"
+            onclick="return confirm('Supprimer ?')"
           >
             Supprimer
           </button>
