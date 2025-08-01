@@ -11,7 +11,9 @@
     <a href="/users/register">Créer un compte</a>
     <a href="/users/login">Se connecter</a>
     <% } else { %>
-    <span>Bonjour <strong><%= user.username %></strong></span>
+    <span
+      >Bonjour <a href="/users/profil"><strong><%= user.username %></strong></a>
+    </span>
     <a href="/users/logout">Se déconnecter</a>
     <% } %>
   </div>

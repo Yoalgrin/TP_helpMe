@@ -201,3 +201,26 @@ button[type="submit"]:hover {
 .btn-delete:hover {
   background-color: #a71d2a;
 }
+.header-links a[href="/profil"] {
+  text-decoration: none;
+  color: inherit;
+  font-weight: bold;
+}
+.header-links a[href="/profil"]:hover {
+  text-decoration: underline;
+}
+.profil-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 40px;
+}
+
+.profil-box {
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #ccc;
+  width: 300px;
+  text-align: left;
+}
