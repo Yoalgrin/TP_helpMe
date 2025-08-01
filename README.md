@@ -67,3 +67,6 @@ Passage des tickets à MongoDB Atlas
 Développé dans le cadre de la formation D2WM (ENI, session HDW156).
 Projet pédagogique orienté bonnes pratiques back-end, sécurité et architecture propre.
 
+📄 Licence
+
+Projet libre sous licence MIT — feel free to fork, modifier, contribuer !
