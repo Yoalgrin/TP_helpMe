@@ -32,3 +32,11 @@
 
 ## 📁 Structure du projet
 
+/routes → Routes Express (tickets, users)
+/services → Logique métier et accès DB
+/dal → Accès directs à MongoDB (optionnel)
+/views → Templates EJS
+/public/css → Fichiers CSS
+.env → Variables d’environnement (.gitignore)
+/app.js → Entrée principale
+
