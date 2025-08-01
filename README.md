@@ -40,3 +40,24 @@
 .env → Variables d’environnement (.gitignore)
 /app.js → Entrée principale
 
+
+---
+
+## ⚙️ Installation
+
+```bash
+git clone https://github.com/ton-utilisateur/helpme.git
+cd helpme
+npm install
+cp .env.example .env   # et personnalise les infos de connexion
+node app.js
+
+✅ À faire / En cours
+
+Intégration bcrypt pour sécuriser les mots de passe
+
+Ajout d’un rôle admin avec visualisation globale
+
+Système de notifications dans l’interface
+
+Passage des tickets à MongoDB Atlas
