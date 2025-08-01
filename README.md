@@ -61,3 +61,9 @@ Ajout d’un rôle admin avec visualisation globale
 Système de notifications dans l’interface
 
 Passage des tickets à MongoDB Atlas
+
+👨‍💻 Auteur
+
+Développé dans le cadre de la formation D2WM (ENI, session HDW156).
+Projet pédagogique orienté bonnes pratiques back-end, sécurité et architecture propre.
+
