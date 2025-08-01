@@ -16,7 +16,10 @@
       <p><strong>Date :</strong> <%= ticket.dateCreation %></p>
       <p><strong>État :</strong> <%= ticket.etat %></p>
 
-      <p><a href="/tickets">← Retour à la liste</a></p>
+      <p><form action="/tickets" method="get" style="margin-top: 20px;">
+          <button type="submit">← Retour à la liste</button>
+         </form>
+      </p>
     </main>
 
     <%- include("fragments/footer") %>

@@ -5,7 +5,7 @@ require("dotenv").config();
 const EXPRESS_VIEW_ENGINE = "ejs";
 const VIEWS_FOLDER = "./views";
 const STATIC_FOLDER = "public";
-const BASE_ROUTE = "/";
+
 const { connect } = require("./services/db");
 
 // Importe express
@@ -15,6 +15,12 @@ const app = express();
 
 // Middleware pour parser les formulaires POST
 app.use(express.urlencoded({ extended: true }));
+
+// Permet d'utiliser session.user.username dans toutes les vues
+app.use((req, res, next) => {
+  res.locals.session = req.session;
+  next();
+});
 
 // Configuration express-session
 app.use(

@@ -4,14 +4,15 @@
     <span class="site-title">HelpMe!</span>
   </div>
 
-  <nav>
-    <a href="/">Accueil</a>
+  <div class="header-links">
+    <a href="/tickets">Accueil</a>
 
-    <% if (user) { %>
-    <span>Bienvenue, <%= user.name %></span>
-    <a href="/users/logout">Se déconnecter</a>
-    <% } else { %>
+    <% if (!user) { %>
+    <a href="/users/register">Créer un compte</a>
     <a href="/users/login">Se connecter</a>
+    <% } else { %>
+    <span>Bonjour <strong><%= user.username %></strong></span>
+    <a href="/users/logout">Se déconnecter</a>
     <% } %>
-  </nav>
+  </div>
 </header>

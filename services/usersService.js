@@ -1,28 +1,46 @@
-const users = [
-  {
-    id: 1,
-    username: "formateur",
-    password: process.env.PWD_FORMATEUR,
-    name: "Monsieur Formateur",
-    role: 2,
-  },
-  {
-    id: 2,
-    username: "etudiant",
-    password: "demo123",
-    name: "Jean Apprenant",
-    role: 1,
-  },
-];
+const { getDb } = require("./db");
+const { ObjectId } = require("mongodb");
 
-function findUserByUsername(username) {
-  return users.find((u) => u.username === username);
+//  Récupère un utilisateur depuis MongoDB à partir de son username
+async function findUserByUsername(username) {
+  const db = getDb();
+  return await db.collection("users").findOne({ username });
 }
 
-function validateUser(username, password) {
-  const user = findUserByUsername(username);
-  if (!user) return null;
-  return user.password === password ? user : null;
+//  Valide les identifiants (login)
+async function validateUser(username, password) {
+  const db = getDb();
+  const user = await db.collection("users").findOne({ username });
+  return user && user.password === password ? user : null;
 }
 
-module.exports = { findUserByUsername, validateUser };
+// ➕ Ajoute un utilisateur (utilisé pour des ajouts directs)
+async function addUser(user) {
+  const db = getDb();
+  const result = await db.collection("users").insertOne(user);
+  return result.insertedId;
+}
+
+// 👤 Crée un nouvel utilisateur (avec vérification d’unicité)
+async function createUser(userData) {
+  const db = getDb();
+  const usersCollection = db.collection("users");
+
+  const existingUser = await usersCollection.findOne({
+    username: userData.username,
+  });
+
+  if (existingUser) {
+    throw new Error("Nom d'utilisateur déjà utilisé");
+  }
+
+  await usersCollection.insertOne(userData);
+}
+
+//  Export unique (tout réuni)
+module.exports = {
+  findUserByUsername,
+  validateUser,
+  addUser,
+  createUser,
+};

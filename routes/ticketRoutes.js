@@ -3,11 +3,6 @@ const router = express.Router();
 const { ObjectId } = require("mongodb");
 
 const {
-  //creerTicket,
-  //getAllTickets,
-  //resetTickets,
-  //ajouterTicket,
-  //supprimerTicket,
   ajouterTicketMongo,
   getAllTicketsMongo,
   supprimerTicketMongo,
