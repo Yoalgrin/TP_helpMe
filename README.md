@@ -13,33 +13,35 @@
 - 📚 Sauvegarde en mémoire ou dans MongoDB
 - 🔍 Filtrage et tri des tickets
 - 🔐 Mots de passe sécurisés (prévu avec `bcrypt`)
-- 🛠️ Logs via `pino` configurables avec `.env` // En cours
+- 🛠️ Logs via `pino` configurables avec `.env` _(en cours)_
 
 ---
 
 ## 🧱 Stack technique
 
-| Technologie | Usage |
-|-------------|-------|
-| **Node.js** | Back-end |
-| **Express.js** | Routing / serveur web |
-| **MongoDB** | Base de données (persistance) |
-| **EJS** | Moteur de templates côté serveur |
-| **express-session** | Sessions utilisateurs |
-| **dotenv** | Variables d’environnement |
-| **Pino** | Logging des événements | // En cours
+| Technologie        | Usage                                |
+|--------------------|--------------------------------------|
+| **Node.js**         | Back-end                             |
+| **Express.js**      | Routing / serveur web                |
+| **MongoDB**         | Base de données (persistance)        |
+| **EJS**             | Moteur de templates côté serveur     |
+| **express-session** | Sessions utilisateurs                |
+| **dotenv**          | Variables d’environnement            |
+| **Pino**            | Logging des événements _(en cours)_  |
+
 ---
 
 ## 📁 Structure du projet
 
-/routes → Routes Express (tickets, users)
-/services → Logique métier et accès DB
-/dal → Accès directs à MongoDB (optionnel)
-/views → Templates EJS
-/public/css → Fichiers CSS
-.env → Variables d’environnement (.gitignore)
-/app.js → Entrée principale
-
+```
+/routes         → Routes Express (tickets, users)
+/services       → Logique métier et accès DB
+/dal            → Accès directs à MongoDB (optionnel)
+/views          → Templates EJS
+/public/css     → Fichiers CSS
+.env            → Variables d’environnement (.gitignore)
+/app.js         → Entrée principale
+```
 
 ---
 
@@ -51,22 +53,26 @@ cd helpme
 npm install
 cp .env.example .env   # et personnalise les infos de connexion
 node app.js
+```
 
-✅ À faire / En cours
+---
 
-Intégration bcrypt pour sécuriser les mots de passe
+## ✅ À faire / En cours
 
-Ajout d’un rôle admin avec visualisation globale
+- [ ] Intégration `bcrypt` pour sécuriser les mots de passe
+- [ ] Ajout d’un rôle admin avec visualisation globale
+- [ ] Système de notifications dans l’interface
+- [ ] Passage des tickets à MongoDB Atlas
 
-Système de notifications dans l’interface
+---
 
-Passage des tickets à MongoDB Atlas
+## 👨‍💻 Auteur
 
-👨‍💻 Auteur
-
-Développé dans le cadre de la formation D2WM (ENI, session HDW156).
+Développé dans le cadre de la formation **D2WM (ENI, session HDW156)**.  
 Projet pédagogique orienté bonnes pratiques back-end, sécurité et architecture propre.
 
-📄 Licence
+---
+
+## 📄 Licence
 
 Projet libre sous licence MIT — feel free to fork, modifier, contribuer !
